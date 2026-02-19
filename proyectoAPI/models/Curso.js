@@ -1,14 +1,13 @@
 //Crear un modelo de datos, similar a las clases
-const moongose = require("moongose");
+const mongoose = require('mongoose');
 
-const cursoSchema = new moongose.Schema(
-  {
-    nombre: { type: String, required: true },
-    descripcion: { type: String, required: true },
-    estado: { type: String, required: true },
-    creditos: { type: Number, required: true },
-  },
-  { timestamps: true },
-);
+const cursoSchema = new mongoose.Schema({
+  nombre: { type: String, required: true },
+  descripcion: { type: String, required: true },
+  estado: { type: String, required: true },
+  creditos: { type: Number, required: true },
+});
 
-module.exports = moongose.model("Curso", cursoSchema);
+
+
+module.exports = mongoose.model('Curso', cursoSchema);

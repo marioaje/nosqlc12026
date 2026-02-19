@@ -15,6 +15,9 @@ mongoose
 
 const PORT = process.env.PORT || 3000;
 
+//Routes CRUD
+app.use("/api/cursos", require("./routes/cursoRoutes"));
+
 app.listen(PORT, () => {
   console.log(`Servidor ejecutadonse ${PORT}`);
 });
