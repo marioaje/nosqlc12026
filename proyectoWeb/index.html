@@ -34,21 +34,18 @@
         <table class="table table-primary">
           <thead>
             <tr>
-              <th scope="col">Column 1</th>
-              <th scope="col">Column 2</th>
-              <th scope="col">Column 3</th>
+              <th scope="col">Id</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Usuario</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="tablademuestradedatos">
             <tr class="">
               <td scope="row">R1C1</td>
               <td>R1C2</td>
               <td>R1C3</td>
-            </tr>
-            <tr class="">
-              <td scope="row">Item</td>
-              <td>Item</td>
-              <td>Item</td>
+              <td>R1C3</td>
             </tr>
           </tbody>
         </table>
@@ -80,9 +77,32 @@
             url: "https://paginas-web-cr.com/Api/apis/ListaCurso.php",
             dataType: "json",
             success: function (response) {
-              console.log(response);
+              cargadatos(response.data);
+            },
+            error: function (error) {
+              alert("Error al cargar los datos");
             },
           });
+        }
+
+        function cargadatos(objeto) {
+          const $tablademuestradedatos = $("#tablademuestradedatos");
+
+          $tablademuestradedatos.empty();
+
+          objeto.forEach((elementosdelarrglo) => {
+            let filadeDatos = `<tr class="">
+                                <td scope="row">${elementosdelarrglo.id}</td>
+                                <td>${elementosdelarrglo.nombre}</td>
+                                <td>${elementosdelarrglo.descripcion}</td>
+                                <td>${elementosdelarrglo.usuario}</td><
+                            /tr>`;
+
+            $tablademuestradedatos.append(filadeDatos);
+          });
+          // tablademuestradedatos
+          //   tablademuestradedatos
+          //"id":"5038","nombre":"1","descripcion":"2","tiempo":"3","usuario":"4"
         }
       });
     </script>
